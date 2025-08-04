@@ -42,11 +42,8 @@ export const LLMCodeBlock: LLMOutputComponent = memo(({ blockMatch }) => {
   const [, copyToClipboard] = useCopyToClipboard();
 
   const parsed = parseCompleteMarkdownCodeBlock(blockMatch.output);
-  const language = parsed?.language || "text";
-  const code = parsed?.code || blockMatch.output;
-  console.log("Parsed code block:", { language, code });
-  console.log("Block match output:", blockMatch.output);
-  console.log(parsed);
+  const language = parsed?.language ?? "text";
+  const code = parsed?.code ?? blockMatch.output;
 
   const { html: lightHtml } = useCodeBlockToHtml({
     markdownCodeBlock: blockMatch.output,
@@ -78,7 +75,7 @@ export const LLMCodeBlock: LLMOutputComponent = memo(({ blockMatch }) => {
       <Card className="codeblock relative w-full max-w-full gap-0 overflow-hidden rounded-md py-0 font-sans">
         <div className="bg-primary/10 flex w-full items-center justify-between py-1 pr-2 pl-4">
           <span className="text-xs font-semibold">
-            {markdownLanguages[language] || language}
+            {markdownLanguages[language] ?? language}
           </span>
           <div className="flex items-center gap-2">
             <span
@@ -122,7 +119,7 @@ export const LLMCodeBlock: LLMOutputComponent = memo(({ blockMatch }) => {
     <Card className="codeblock relative w-full max-w-full gap-0 overflow-hidden rounded-md py-0 font-sans">
       <div className="bg-primary/10 flex w-full items-center justify-between py-1 pr-2 pl-4">
         <span className="text-xs font-semibold">
-          {markdownLanguages[language] || language}
+          {markdownLanguages[language] ?? language}
         </span>
         <div className="flex items-center gap-2">
           <span
