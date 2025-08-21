@@ -7,6 +7,11 @@ import { TwitterTools } from "./tools";
 import {
   getUserProfileToolConfigClient,
   getLatestTweetsToolConfigClient,
+  searchTweetsToolConfigClient,
+  getFollowersToolConfigClient,
+  getFollowingToolConfigClient,
+  getTrendingTopicsToolConfigClient,
+  getUserMentionsToolConfigClient,
 } from "./tools/client";
 
 import { ToolkitGroups } from "@/toolkits/types";
@@ -17,7 +22,8 @@ export const twitterClientToolkit = createClientToolkit(
   baseTwitterToolkitConfig,
   {
     name: "Twitter",
-    description: "Get Twitter user profiles and latest tweets",
+    description:
+      "Comprehensive Twitter toolkit for user analysis, search, and social network research",
     icon: SiX,
     form: null,
     Wrapper: TwitterWrapper,
@@ -47,5 +53,10 @@ export const twitterClientToolkit = createClientToolkit(
   {
     [TwitterTools.GetUserProfile]: getUserProfileToolConfigClient,
     [TwitterTools.GetLatestTweets]: getLatestTweetsToolConfigClient,
+    [TwitterTools.SearchTweets]: searchTweetsToolConfigClient,
+    [TwitterTools.GetFollowers]: getFollowersToolConfigClient,
+    [TwitterTools.GetFollowing]: getFollowingToolConfigClient,
+    [TwitterTools.GetTrendingTopics]: getTrendingTopicsToolConfigClient,
+    [TwitterTools.GetUserMentions]: getUserMentionsToolConfigClient,
   },
 );
